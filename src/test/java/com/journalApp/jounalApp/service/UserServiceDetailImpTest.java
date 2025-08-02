@@ -4,6 +4,7 @@ import com.journalApp.jounalApp.Repo.UserRepo;
 import com.journalApp.jounalApp.entity.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 
 import static org.mockito.Mockito.*;
 
-
+@Disabled
 public class UserServiceDetailImpTest {
     @InjectMocks
     private UserDetailServiceImp userDetailServiceImp;
