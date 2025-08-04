@@ -2,6 +2,7 @@ package com.journalApp.jounalApp.service;
 
 import com.journalApp.jounalApp.api.response.WeatherResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -10,7 +11,8 @@ import org.springframework.web.client.RestTemplate;
 
 @Component
 public class WeatherService {
-    private final static String key = "634dc83f2861dc5d7071d023c8093b7a";
+    @Value("{weather_api_key}")
+    private static String key;
     private final static String API = "http://api.weatherstack.com/current?access_key=KEY&query=CITY";
 
     @Autowired
