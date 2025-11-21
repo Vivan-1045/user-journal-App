@@ -25,18 +25,30 @@ public class journalEntryControllerV2 {
     private UserService userService;
 
 
-    @GetMapping
-    public ResponseEntity<?> getallJournalEntriesOfUser(){
+    //Get Entry of all User at ones
+    @GetMapping("/allEntries")
+    public ResponseEntity<?> getallJournalEntriesOfUsers(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String userName = auth.getName();
-
-        User user = userService.findByUserName(userName);
-        List<journalEntry> listAll = user.getJournalEntries();
+        List<journalEntry> listAll = journalEntryService.getAll();
         if (listAll != null && !listAll.isEmpty()){
             return new ResponseEntity<>(listAll, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    //Get entries of patricular user (in review)
+//    @GetMapping
+//    public ResponseEntity<?> getallEntriesOfUser(){
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        String userName = auth.getName();
+//
+//        User user = userService.findByUserName(userName);
+//        List<journalEntry> listAll = user.getJournalEntries();
+//        if (listAll != null && !listAll.isEmpty()){
+//            return new ResponseEntity<>(listAll, HttpStatus.OK);
+//        }
+//        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//    }
 
     @PostMapping
     public ResponseEntity<journalEntry> createEntry(@RequestBody journalEntry content){
