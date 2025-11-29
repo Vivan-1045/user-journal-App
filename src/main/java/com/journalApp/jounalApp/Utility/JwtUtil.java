@@ -1,4 +1,4 @@
-package com.journalApp.jounalApp.Utility;
+package com.journalApp.jounalApp.utility;
 
 
 import io.jsonwebtoken.Claims;

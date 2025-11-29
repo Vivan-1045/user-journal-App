@@ -1,6 +1,7 @@
 package com.journalApp.jounalApp.filter;
 
-import com.journalApp.jounalApp.Utility.JwtUtil;
+import com.journalApp.jounalApp.utility.JwtUtil;
+import com.journalApp.jounalApp.utility.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -26,6 +27,10 @@ public class JwtFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException, IOException {
+        String path = request.getServletPath();
+
+        // Skip Swagger and public endpoints
+
         String authorizationHeader = request.getHeader("Authorization");
         String username = null;
         String jwt = null;
